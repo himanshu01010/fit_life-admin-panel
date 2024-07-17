@@ -29,13 +29,14 @@ const Navbar = () => {
       navigate(0)
       
     } catch (error) {
-      toast.error(error.reponse.data.message);
+      toast.error(error.response.data.message);
       
     }
   }
 
   return (
-    <div className="navbar bg-base-300 p-4 shadow shadow-cyan-500 shadow-md justify-between">
+   <div className='m-10 ml-40 mr-40'>
+     <div className="navbar bg-base-300 flex p-4 shadow rounded-full shadow-cyan-500 shadow-lg justify-between">
       <div className="flex-none pl-5">
         <div onClick={toggleDrawer} className="btn btn-ghost btn-circle  outline outline-cyan-500 shadow shadow-lg shadow-cyan-500 cursor-pointer">
           <svg
@@ -52,11 +53,11 @@ const Navbar = () => {
           </svg>
         </div>
       </div>
-      <div className="flex justify-center pl-16 md:pl-0">
-        <img src={logo} alt="Logo" className='h-22 w-28 shadow shadow-sm rounded-xl shadow-cyan-500' />
+      <div className="flex  justify-center pl-1">
+        <img src={logo} alt="Logo" className='h-22 w-28 shadow shadow-md rounded-xl shadow-cyan-500' />
       </div>
       <div className="flex-none flex items-center">
-        <div className="dropdown dropdown-end pr-20">
+        {/* <div className="dropdown dropdown-end pr-20">
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle outline outline-cyan-500 shadow shadow-lg shadow-cyan-500">
             <div className="indicator">
               <svg
@@ -85,7 +86,7 @@ const Navbar = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
         <div className="dropdown dropdown-end pr-10">
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar ">
             <div className="h-16 rounded-full outline outline-cyan-500 shadow shadow-lg  shadow-cyan-500" >
@@ -146,6 +147,7 @@ const Navbar = () => {
         </div>
       </div>
     </div>
+   </div>
   );
 };
 
