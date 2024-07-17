@@ -17,11 +17,13 @@ const App = () => {
     axios.get(`${url}/api/user/logincheck`,{withCredentials:true})
     .then(res=>{
       setAuth(res.data);
+      // res.data
     }).catch(()=>{
       setAuth(false)
 
     })
   },[auth]);
+  
 
   console.log(auth);
 
