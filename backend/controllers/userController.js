@@ -87,6 +87,31 @@ const loginUser = asyncHandler(async (req,res)=>{
         res.status(400);
         throw new Error("Invalid email and password");
     }
-})
+});
 
-export {registerUser,loginUser};
+const loginCheck = asyncHandler(async (req,res)=>{
+    const token = req.cookies.token;
+    if(!token){
+        return res.json(false);
+    }
+
+    try {
+        const verify = jwt.verify(token,process.env.JWT_KEY);
+        if(verify){
+            return res.json(true);
+        }
+        
+    } catch (error) {
+        console.error("Jtw verification failed",error.message);
+        
+    }
+    return res.json(false);
+
+});
+
+const logout =(req,res)=>{
+    res.clearCookie("token");
+    res.status(200).json({ message: "Successfully Logged Out" });
+}
+
+export {registerUser,loginUser,loginCheck,logout};

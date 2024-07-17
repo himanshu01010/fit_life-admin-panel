@@ -1,7 +1,13 @@
+import axios from 'axios';
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 const Navbar = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const url = import.meta.env.VITE_BACKEND_URL;
+
+  const navigate = useNavigate()
 
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);
@@ -12,6 +18,20 @@ const Navbar = () => {
     // Handle the click event for each menu item here
     // For example, navigate to different pages or perform specific actions
   };
+
+  const logout = async()=>{
+    try {
+      await axios.get(`${url}/api/user/logout`,{
+        withCredentials:true,
+      });
+      navigate('/logout');
+      navigate(0)
+      
+    } catch (error) {
+      toast.error(error.reponse.data.message);
+      
+    }
+  }
 
   return (
     <div className="navbar bg-base-100 p-4 shadow-md">
@@ -80,7 +100,7 @@ const Navbar = () => {
               </a>
             </li>
             <li><a>Settings</a></li>
-            <li><a>Logout</a></li>
+            <li><button onClick={logout}>Logout</button></li>
           </ul>
         </div>
       </div>

@@ -24,6 +24,11 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(bodyParser.json());
 
+app.use(cors({
+    origin:["http://localhost:5173"],
+    credentials:true,
+}))
+
 app.use("/api/user", userRoute);
 
 const PORT = process.env.PORT||5000;
