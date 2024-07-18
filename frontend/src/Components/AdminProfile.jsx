@@ -42,7 +42,7 @@ const AdminProfile = () => {
     <div className="flex justify-center p-20 items-center">
       <div className="bg-cyan-300 p-10 pt-10 rounded-3xl outline outline-4 bg-opacity-50 outline-cyan-500 shadow shadow-lg shadow-cyan-500 h-full w-full max-w-xl">
         <div className="relative flex flex-col items-center">
-          <img className="w-40 h-40 rounded-full object-cover mb-4" src={image} alt="Admin" />
+          <img className="w-40 h-40 outline outline-4 outline-cyan-500 shadow shadow-xl shadow-black rounded-full object-cover mb-4" src={image} alt="Admin" />
           <label className="absolute bottom-4 right-4 bg-white p-2 rounded-full shadow-md cursor-pointer">
             <FaPencilAlt className="text-gray-700" />
             <input
