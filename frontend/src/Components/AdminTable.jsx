@@ -100,43 +100,43 @@ const AdminTable = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <table className="min-w-full outline outline-cyan-500 shadow shadow-lg shadow-cyan-500 rounded-xl overflow-hidden">
-        <thead className="bg-cyan-900 text-white outline outline-cyan-500">
-          <tr>
-            <th className="w-1/6 px-4 py-4">S.No</th>
-            <th className="w-2/6 px-4 py-4">Name</th>
-            <th className="w-2/6 px-4 py-4">Phone Number</th>
-            <th className="w-2/6 px-4 py-4">E-mail</th>
-            <th className="w-2/6 px-4 py-4">Service</th>
-            <th className="w-3/6 px-4 py-4">Comments</th>
-            <th className="w-1/6 px-4 py-4">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((item, index) => (
-            <tr key={index} className="text-center border-b border-gray-200">
-              <td className="py-2">{index + 1}</td>
-              <td className="py-2">{item.name}</td>
-              <td className="py-2">{item.phoneNumber}</td>
-              <td className="py-2">{item.email}</td>
-              <td className="py-2">{item.service}</td>
-              <td className="py-2">{item.comments}</td>
-              <td className="py-2">
-                <div className="flex justify-center items-center">
-                  <BsFillTrashFill
-                    className="cursor-pointer text-blue-500 mr-2 hover:text-white"
-                    size={20}
-                    onClick={() => handleDelete(index)}
-                    onMouseEnter={(e) => e.currentTarget.classList.add('text-white')}
-                    onMouseLeave={(e) => e.currentTarget.classList.remove('text-white')}
-                    title="Delete"
-                  />
-                </div>
-              </td>
+      <div className=" ">
+        <table className="min-w-full outline outline-cyan-500 divide-y divide-gray-200 shadow-lg rounded-xl overflow-hidden">
+          <thead className="bg-cyan-900 outline outline-cyan-500 text-white">
+            <tr>
+              <th className="hidden md:table-cell px-4 py-3">S.No</th>
+              <th className="px-4 py-3">Name</th>
+              <th className="px-4 py-3">Phone Number</th>
+              <th className="px-4 py-3">E-mail</th>
+              <th className="px-4 py-3">Service</th>
+              <th className="px-4 py-3">Comments</th>
+              <th className="px-4 py-3">Actions</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody className="bg-base divide-y divide-gray-200">
+            {data.map((item, index) => (
+              <tr key={index} className="text-center">
+                <td className="hidden md:table-cell py-2">{index + 1}</td>
+                <td className="px-4 py-2">{item.name}</td>
+                <td className="px-4 py-2">{item.phoneNumber}</td>
+                <td className="px-4 py-2">{item.email}</td>
+                <td className="px-4 py-2">{item.service}</td>
+                <td className="px-4 py-2">{item.comments}</td>
+                <td className="px-4 py-2">
+                  <div className="flex justify-center items-center">
+                    <BsFillTrashFill
+                      className="cursor-pointer text-blue-500 mr-2 hover:text-white"
+                      size={20}
+                      onClick={() => handleDelete(index)}
+                      title="Delete"
+                    />
+                  </div>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
