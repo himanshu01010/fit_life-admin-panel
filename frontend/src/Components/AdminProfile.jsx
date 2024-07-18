@@ -40,7 +40,7 @@ const AdminProfile = () => {
 
   return (
     <div className="flex justify-center p-20 items-center">
-      <div className="bg-cyan-300 p-10 pt-10 rounded-lg shadow-lg h-full w-full max-w-xl">
+      <div className="bg-cyan-300 p-10 pt-10 rounded-3xl outline outline-4 bg-opacity-50 outline-cyan-500 shadow shadow-lg shadow-cyan-500 h-full w-full max-w-xl">
         <div className="relative flex flex-col items-center">
           <img className="w-40 h-40 rounded-full object-cover mb-4" src={image} alt="Admin" />
           <label className="absolute bottom-4 right-4 bg-white p-2 rounded-full shadow-md cursor-pointer">
@@ -61,7 +61,7 @@ const AdminProfile = () => {
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="mt-5 block w-full rounded-md border-base-300 p-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-lg"
+              className="mt-5 block w-full rounded-3xl border-base-300 p-2 shadow-2xl focus:border-indigo-500 focus:ring-indigo-500 sm:text-lg"
             />
           </div>
           <div className="mt-4">
@@ -70,7 +70,7 @@ const AdminProfile = () => {
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="mt-5 block w-full rounded-md border-base-300 p-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-lg"
+              className="mt-5 block w-full rounded-3xl border-base-300 p-2 shadow-2xl focus:border-indigo-500 focus:ring-indigo-500 sm:text-lg"
             />
           </div>
           <div className="mt-4">
@@ -79,12 +79,12 @@ const AdminProfile = () => {
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              className="mt-5 block w-full rounded-md border-base-300 p-2 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-lg"
+              className="mt-5 block w-full rounded-3xl border-base-300 p-2 shadow-2xl focus:border-indigo-500 focus:ring-indigo-500 sm:text-lg"
             />
           </div>
           <button
             type="submit"
-            className="mt-6 ml-40 bg-base-300 hover:bg-cyan-500 hover:text-black text-white font-bold py-2 px-4 rounded"
+            className="mt-6 ml-40 bg-base-300 hover:bg-cyan-500 hover:text-black text-white font-bold py-2 px-4 rounded-3xl"
           >
             Save & Update
           </button>
