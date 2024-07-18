@@ -1,32 +1,47 @@
-import React, { useState } from 'react';
-// You can use any icon library, here we are using an SVG for the pencil icon
+import React, { useEffect, useState } from 'react';
 import { FaPencilAlt } from 'react-icons/fa';
-
+import Resetpassword from './Resetpassword'; // Import the ResetPasswordModal component
+import axios from "axios";
+import { toast } from 'react-toastify';
 const AdminProfile = () => {
-  // Initial state for admin details
   const [admin, setAdmin] = useState({
-    name: 'Admin Name',
-    email: 'admin@example.com',
-    password: '********', // Initial password, replace with appropriate handling for security
-    image: 'https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg', // Placeholder image URL
+    name: '',
+    email: '',
+    image: 'https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg',
   });
 
-  // State to manage editable fields
   const [name, setName] = useState(admin.name);
   const [email, setEmail] = useState(admin.email);
-  const [password, setPassword] = useState(admin.password);
   const [image, setImage] = useState(admin.image);
 
-  // Function to handle form submission
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/user/getuser`, {withCredentials: true});
+        const userData = response.data;
+        setAdmin(prevAdmin => ({
+          ...prevAdmin,
+          email: userData.email,
+          name: userData.username,
+        }));
+        setName(userData.username);
+        setEmail(userData.email);
+      } catch (error) {
+        console.error("Error fetching user data:", error);
+      }
+    };
+
+    fetchUser();
+  }, []);
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Update admin state with new name, email, password, and image
-    setAdmin({ ...admin, name, email, password, image });
-    // Here you would typically also send this data to your server
-    console.log('Updated admin details:', { name, email, password, image });
+    setAdmin({ ...admin, name, email, image });
+    console.log('Updated admin details:', { name, email, image });
   };
 
-  // Function to handle image change
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     const reader = new FileReader();
@@ -37,6 +52,18 @@ const AdminProfile = () => {
       reader.readAsDataURL(file);
     }
   };
+
+  const handleResetPassword = (newPassword) => {
+    // Here you would typically also send this data to your server
+    console.log('Password reset to:', newPassword);
+  };
+
+  const updateUser = async() => {
+    await axios.put(`${import.meta.env.VITE_BACKEND_URL}/api/user/update`, {email, username: name}, {withCredentials: true})
+    toast.success("Updated")
+    fetchUser();
+
+  }
 
   return (
     <div className="flex justify-center p-20 items-center">
@@ -73,23 +100,25 @@ const AdminProfile = () => {
               className="mt-5 block w-full rounded-3xl border-base-300 p-2 shadow-2xl focus:border-indigo-500 focus:ring-indigo-500 sm:text-lg"
             />
           </div>
-          <div className="mt-4">
-            <label className="block text-lg font-medium text-black">Password</label>
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              className="mt-5 block w-full rounded-3xl border-base-300 p-2 shadow-2xl focus:border-indigo-500 focus:ring-indigo-500 sm:text-lg"
-            />
-          </div>
           <button
-            type="submit"
+            onClick={updateUser}
             className="mt-6 ml-40 bg-base-300 hover:bg-cyan-500 hover:text-black text-white font-bold py-2 px-4 rounded-3xl"
           >
             Save & Update
           </button>
         </form>
+        <button
+          onClick={() => setIsModalOpen(true)}
+          className="mt-6 ml-40 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded-3xl"
+        >
+          Reset Password
+        </button>
       </div>
+      <Resetpassword
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onReset={handleResetPassword}
+      />
     </div>
   );
 };

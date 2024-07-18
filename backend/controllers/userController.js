@@ -114,4 +114,60 @@ const logout =(req,res)=>{
     res.status(200).json({ message: "Successfully Logged Out" });
 }
 
-export {registerUser,loginUser,loginCheck,logout};
+const getuser = asyncHandler(async (req, res) => {
+    const user = await User.findById(req.user._id);
+
+    if(user){
+        const {email, username} = user;
+        res.status(200).json({
+            email,
+            username
+        })
+    }
+    else{
+        res.status(400)
+        throw new Error("User Not Found!");
+        console.log("User not found!");
+    }
+
+})
+
+const updateUser = asyncHandler(async (req, res) => {
+    const id = req.user._id;
+    const {email, username} = req.body;
+
+    try {
+        await User.findByIdAndUpdate(id, {email, username}, {new: true, runValidators: true});
+        res.status(200).json({message: "User Updated Successfully"})
+    } catch (error) {
+        res.status(400)
+        throw new Error("User Not Updated");
+    }
+})
+
+const updatePassword = asyncHandler(async (req, res) => {
+    const id = req.user._id;
+    const {password} = req.body;
+
+    try {
+        const salt = await bcrypt.genSalt(10);
+        const hashpass = await bcrypt.hash(password,salt);
+        await User.findByIdAndUpdate(id, {password: hashpass}, {new: true, runValidators: true})
+        res.status(201).json({message: "Updated Successfully"})
+    } catch (error) {
+        res.status(400)
+        throw new Error("Unable to update")
+    }
+   
+})
+
+// const userData = asyncHandler(async(req,res)=>{
+//     const {email,username,password} = req.body;
+//     if(!email || !username || !password){
+//         res.status(400)
+//         throw new Error("data is not present");
+//     }
+
+// })
+
+export {registerUser,loginUser,loginCheck,logout,getuser,updateUser,updatePassword};
