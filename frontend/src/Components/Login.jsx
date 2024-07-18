@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import logo from '../assets/logo.png';
 import bg from '../assets/bg.png';
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Login.css'; // Import your CSS for additional styling
@@ -36,6 +36,7 @@ const Login = () => {
       });
       navigate('/');
       navigate(0)
+      toast.success("You have logged in successfully");
       console.log(res.data);
 
     } catch (error) {

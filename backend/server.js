@@ -7,6 +7,7 @@ import cookieSession from "cookie-session";
 import cors from "cors";
 import passport from "passport"
 import userRoute from "./routes/userRoute.js";
+import contactRoute from "./routes/contactRoute.js"
 
 dotenv.config()
 
@@ -25,11 +26,12 @@ app.use(passport.session());
 app.use(bodyParser.json());
 
 app.use(cors({
-    origin:["http://localhost:5173"],
+    origin:["http://localhost:5173","http://localhost:5174"],
     credentials:true,
 }))
 
 app.use("/api/user", userRoute);
+app.use("/api/form",contactRoute)
 
 const PORT = process.env.PORT||5000;
 
