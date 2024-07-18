@@ -1,0 +1,11 @@
+/* Login.css */
+
+/* Adjust padding for smaller screens */
+@media (max-width: 768px) {
+    .bg-black {
+      padding: 2rem; /* Adjust as needed */
+    }
+  }
+  
+  /* Additional responsive styles can be added here */
+  

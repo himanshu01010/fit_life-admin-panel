@@ -1,0 +1,30 @@
+/* Navbar.css */
+
+/* Adjustments for smaller screens */
+@media (max-width: 768px) {
+    .navbar {
+      flex-direction: column; /* Stack items vertically on small screens */
+      padding: 2rem; /* Adjust padding as needed */
+    }
+  
+    .navbar .flex-none {
+      margin-bottom: 1rem; /* Add space between items */
+    }
+  
+    .navbar .dropdown {
+      text-align: center; /* Center dropdown content */
+    }
+  
+    .navbar .menu {
+      width: 100%; /* Full width menu */
+      max-width: none; /* Remove max-width */
+      margin-top: 1rem; /* Add margin */
+    }
+  
+    .navbar .dropdown .btn-circle {
+      margin-bottom: 1rem; /* Add space below avatar */
+    }
+  }
+  
+  /* Additional responsive styles can be added here */
+  

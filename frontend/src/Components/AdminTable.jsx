@@ -64,7 +64,7 @@ const AdminTable = () => {
                   <BsFillTrashFill
                     className="cursor-pointer text-blue-500 mr-2 hover:text-white"
                     size={20}
-                    onClick={() => handleDelete(item.email)}
+                    onClick={() => handleDelete(index)}
                     onMouseEnter={(e) => e.currentTarget.classList.add('text-white')}
                     onMouseLeave={(e) => e.currentTarget.classList.remove('text-white')}
                     title="Delete"
