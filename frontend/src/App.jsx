@@ -6,6 +6,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import AdminTable from './Components/AdminTable';
+import AdminProfile from './Components/AdminProfile';
 
 const App = () => {
   const url = import.meta.env.VITE_BACKEND_URL;
@@ -29,6 +30,7 @@ const App = () => {
         <Route element={auth ? <Layout /> : <Navigate to='/login' />}>
           <Route path='/' element={<div></div>} />
           <Route path='/contact' element={<AdminTable />} />
+          <Route path='/profile' element={<AdminProfile/>}/>
         </Route>
       </Routes>
     </Router>
