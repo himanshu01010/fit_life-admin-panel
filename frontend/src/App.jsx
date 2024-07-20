@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import AdminTable from './Components/AdminTable';
 import AdminProfile from './Components/AdminProfile';
+import Dashboard from './Components/Dashboard';
 
 const App = () => {
   const url = import.meta.env.VITE_BACKEND_URL;
@@ -31,6 +32,7 @@ const App = () => {
           <Route path='/' element={<div></div>} />
           <Route path='/contact' element={<AdminTable />} />
           <Route path='/profile' element={<AdminProfile/>}/>
+          <Route path='/home' element={<Dashboard/>}/>
         </Route>
       </Routes>
     </Router>
