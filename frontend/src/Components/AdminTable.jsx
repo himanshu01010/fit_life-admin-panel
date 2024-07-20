@@ -55,7 +55,7 @@ const AdminTable = () => {
             <tr key={index} className="text-center border-b border-gray-200">
               <td className="py-2">{index + 1}</td>
               <td className="py-2">{item.name}</td>
-              <td className="py-2">{item.phoneNumber}</td>
+              <td className="py-2">{item.phone}</td>
               <td className="py-2">{item.email}</td>
               <td className="py-2">{item.service}</td>
               <td className="py-2">{item.comments}</td>
@@ -64,7 +64,7 @@ const AdminTable = () => {
                   <BsFillTrashFill
                     className="cursor-pointer text-blue-500 mr-2 hover:text-white"
                     size={20}
-                    onClick={() => handleDelete(index)}
+                    onClick={() => handleDelete(item.email)}
                     onMouseEnter={(e) => e.currentTarget.classList.add('text-white')}
                     onMouseLeave={(e) => e.currentTarget.classList.remove('text-white')}
                     title="Delete"
