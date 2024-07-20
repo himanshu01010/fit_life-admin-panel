@@ -23,11 +23,11 @@ const Resetpassword = ({ isOpen, onClose, onReset }) => {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50">
-      <div className="bg-white p-8 rounded shadow-lg w-96">
-        <h2 className="text-2xl font-bold mb-4">Reset Password</h2>
+      <div className="bg-white p-8 mt-10 rounded-2xl bg-opacity-90 shadow-xl w-96">
+        <h2 className="text-2xl text-black font-bold mb-4">Reset Password</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label className="block text-lg font-medium text-gray-700">Password</label>
+            <label className="block text-lg font-medium text-gray-700">New Password</label>
             <input
               type="password"
               value={password}
@@ -36,7 +36,7 @@ const Resetpassword = ({ isOpen, onClose, onReset }) => {
             />
           </div>
           <div className="mb-4">
-            <label className="block text-lg font-medium text-gray-700">Confirm Password</label>
+            <label className="block text-lg font-medium text-gray-700">Confirm New Password</label>
             <input
               type="password"
               value={confirmPassword}
