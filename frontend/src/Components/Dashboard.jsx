@@ -26,6 +26,7 @@ const Dashboard = () => {
     <div className="text-center p-8 mb-5 ml-40 hover:text-5xl hover:mb-0 text-cyan-500 hover:text-white text-7xl">
         <h1>Dashboard</h1>
       </div>
+      
     <div className="p-8 min-h-screen">
 
       <div className="flex justify-between">
@@ -96,6 +97,7 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
+        
         <div className="w-4/6 mr-10 bg-white text-black pt-10 pb-20 pl-5 rounded-lg shadow shadow-xl shadow-cyan-500">
           <h2 className="text-xl text-black font-semibold mb-4">Growth Analytics</h2>
           <ResponsiveContainer width="100%" height={300}>
@@ -112,6 +114,7 @@ const Dashboard = () => {
               </defs>
               <XAxis dataKey="month" />
               <YAxis />
+              
               <CartesianGrid strokeDasharray="3 3" />
               <Tooltip />
               <Area type="monotone" dataKey="present" stroke="#8884d8" fillOpacity={1} fill="url(#colorPresent)" />
@@ -120,9 +123,11 @@ const Dashboard = () => {
           </ResponsiveContainer>
         </div>
       </div>
+      
       <GrowthTrainers/>
     </div>
     <Calender/>
+    
     </>
   );
 };
