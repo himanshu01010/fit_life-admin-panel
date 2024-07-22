@@ -23,7 +23,9 @@ const data = [
 const Dashboard = () => {
   return (
     <>
-   
+    <div className="text-center p-8 mb-5 ml-40 hover:text-5xl hover:mb-0 text-cyan-500 hover:text-white text-7xl">
+        <h1>Dashboard</h1>
+      </div>
     <div className="p-8 min-h-screen">
 
       <div className="flex justify-between">
