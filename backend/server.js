@@ -8,6 +8,7 @@ import cors from "cors";
 import passport from "passport"
 import userRoute from "./routes/userRoute.js";
 import contactRoute from "./routes/contactRoute.js"
+import membershipRoute from "./routes/membershipRoute.js"
 
 dotenv.config()
 
@@ -32,6 +33,7 @@ app.use(cors({
 
 app.use("/api/user", userRoute);
 app.use("/api/form",contactRoute)
+app.use("/api/membership",membershipRoute)
 
 const PORT = process.env.PORT||5000;
 
