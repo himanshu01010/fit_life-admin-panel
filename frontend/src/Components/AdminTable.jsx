@@ -37,7 +37,10 @@ const AdminTable = () => {
 
   
   return (
-    <div className="container mx-auto p-4">
+    <> <div className="text-center p- mb-5 ml-40 hover:text-5xl hover:mb-0 text-cyan-500 hover:text-white text-7xl">
+    <h1>Users</h1>
+  </div>
+    <div className="container mx-80 my-20 p-4">
       <table className="min-w-full outline outline-cyan-500 shadow shadow-lg shadow-cyan-500 rounded-xl overflow-hidden">
         <thead className="bg-cyan-900 text-white outline outline-cyan-500">
           <tr>
@@ -76,6 +79,7 @@ const AdminTable = () => {
         </tbody>
       </table>
     </div>
+    </>
   );
 };
 
