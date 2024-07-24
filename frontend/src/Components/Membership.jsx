@@ -93,6 +93,7 @@
 // export default Membership;
 
 import React, { useState } from 'react';
+import "./membership.css";
 
 const possibleBenefits = [
   'Gym Without Trainers',
@@ -146,87 +147,88 @@ const Membership = () => {
 
   return (
     <>
-      <div className="text-center p-8 mb-5 ml-40 hover:text-5xl hover:mb-0 text-cyan-500 hover:text-white text-7xl">
-        <h1>Membership</h1>
+      <div className="text-center md:ml-80 mb-5 p-8">
+        <h1 className='inline-block hover:text-5xl hover:mb-0 text-cyan-500 hover:text-white text-3xl md:text-7xl'>Membership</h1>
       </div>
-      <div className="flex justify-center ml-40 space-x-12 p-8">
+      <div className="flex flex-wrap justify-evenly md:ml-80">
         {plans.map((plan) => (
-          <div key={plan.id} className="max-w-sm px-8 shadow shadow-lg shadow-cyan-500 outline outline-cyan-500 rounded-3xl overflow-hidden shadow-lg bg-gray-800 text-white p-6 relative flex flex-col justify-between">
-            {editingPlan && editingPlan.id === plan.id ? (
-              <div className="flex flex-col h-full">
-                <input
-                  type="text"
-                  value={editingPlan.name}
-                  onChange={(e) => handleChange(e, 'name')}
-                  className="bg-gray-700 text-white p-2 rounded mb-4 w-full"
-                />
-                <input
-                  type="number"
-                  value={editingPlan.price}
-                  onChange={(e) => handleChange(e, 'price')}
-                  className="bg-gray-700 text-white p-2 rounded mb-4 w-full"
-                />
-                {editingPlan.benefits.map((benefit, index) => (
-                  <div key={index} className="mb-4">
-                    <select
-                      value={benefit}
-                      onChange={(e) => handleChange(e, 'benefits', index)}
-                      className="bg-gray-700 text-white p-2 rounded w-full"
-                    >
-                      {possibleBenefits.map((option, i) => (
-                        <option key={i} value={option}>{option}</option>
-                      ))}
-                    </select>
-                  </div>
+          <div key={plan.id} className="w-full md:w-92 max-w-sm px-8 shadow shadow-lg shadow-cyan-500 outline outline-cyan-500 rounded-3xl overflow-hidden bg-gray-800 text-white p-6 relative flex flex-col align-center justify-between mb-8 membership-card"
+          >
+        {editingPlan && editingPlan.id === plan.id ? (
+          <div className="flex flex-col h-full">
+            <input
+              type="text"
+              value={editingPlan.name}
+              onChange={(e) => handleChange(e, 'name')}
+              className="bg-gray-700 text-white p-2 rounded mb-4 w-full"
+            />
+            <input
+              type="number"
+              value={editingPlan.price}
+              onChange={(e) => handleChange(e, 'price')}
+              className="bg-gray-700 text-white p-2 rounded mb-4 w-full"
+            />
+            {editingPlan.benefits.map((benefit, index) => (
+              <div key={index} className="mb-4">
+                <select
+                  value={benefit}
+                  onChange={(e) => handleChange(e, 'benefits', index)}
+                  className="bg-gray-700 text-white p-2 rounded w-full"
+                >
+                  {possibleBenefits.map((option, i) => (
+                    <option key={i} value={option}>{option}</option>
+                  ))}
+                </select>
+              </div>
+            ))}
+            <div className="mb-4">
+              <input
+                type="text"
+                value={newService}
+                onChange={(e) => setNewService(e.target.value)}
+                placeholder="Add new service"
+                className="bg-gray-700 text-white p-2 rounded w-full"
+              />
+            </div>
+            <div className="mt-auto flex flex-col space-y-2">
+              <button
+                onClick={handleAddService}
+                className="bg-cyan-500 font-bold hover:text-black text-white p-2 py-3 px-5 rounded-full"
+              >
+                Add Service
+              </button>
+              <button
+                onClick={() => handleSave(editingPlan)}
+                className="bg-cyan-500 font-bold hover:text-black text-white p-2 py-3 px-5 rounded-full"
+              >
+                Save
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div className="flex flex-col h-full">
+            <div className="flex-grow">
+              <h2 className="text-2xl p-5 text-white font-bold">{plan.name}</h2>
+              <p className="text-2xl pl-8 text-cyan-500 mb-4">${plan.price}</p>
+              <ul className="text-gray-300 text-lg mb-20 list-disc list-inside">
+                {plan.benefits.filter(b => b !== 'None').map((benefit, index) => (
+                  <li className='p-3' key={index}>{benefit}</li>
                 ))}
-                <div className="mb-4">
-                  <input
-                    type="text"
-                    value={newService}
-                    onChange={(e) => setNewService(e.target.value)}
-                    placeholder="Add new service"
-                    className="bg-gray-700 text-white p-2 rounded w-full"
-                  />
-                </div>
-                <div className="mt-auto flex flex-col space-y-2">
-                  <button
-                    onClick={handleAddService}
-                    className="bg-cyan-500 font-bold hover:text-black text-white p-2 py-3 px-5 rounded-full"
-                  >
-                    Add Service
-                  </button>
-                  <button
-                    onClick={() => handleSave(editingPlan)}
-                    className="bg-cyan-500 font-bold hover:text-black text-white p-2 py-3 px-5 rounded-full"
-                  >
-                    Save
-                  </button>
-                </div>
-              </div>
-            ) : (
-              <div className="flex flex-col h-full">
-                <div className="flex-grow">
-                  <h2 className="text-2xl p-5 text-white font-bold">{plan.name}</h2>
-                  <p className="text-2xl pl-8 text-cyan-500 mb-4">${plan.price}</p>
-                  <ul className="text-gray-300 text-lg mb-20 list-disc list-inside">
-                    {plan.benefits.filter(b => b !== 'None').map((benefit, index) => (
-                      <li className='p-3' key={index}>{benefit}</li>
-                    ))}
-                  </ul>
-                </div>
-                {isAdmin && (
-                  <button
-                    onClick={() => handleEdit(plan)}
-                    className="bg-cyan-500 hover:text-black font-bold text-white p-2 rounded-full py-3 px-5 mt-auto"
-                  >
-                    Edit
-                  </button>
-                )}
-              </div>
+              </ul>
+            </div>
+            {isAdmin && (
+              <button
+                onClick={() => handleEdit(plan)}
+                className="bg-cyan-500 hover:text-black font-bold text-white p-2 rounded-full py-3 px-5 mt-auto"
+              >
+                Edit
+              </button>
             )}
           </div>
-        ))}
+        )}
       </div>
+        ))}
+    </div >
     </>
   );
 };
