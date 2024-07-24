@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import logo from '../assets/logo.png';
-import bg from '../assets/bg.png';
+import bg from '../assets/bg2.jpg';
 import { toast } from "react-toastify";
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
