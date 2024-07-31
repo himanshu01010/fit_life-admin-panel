@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { FaPencilAlt } from 'react-icons/fa';
-import Resetpassword from './Resetpassword'; // Import the ResetPasswordModal component
+import Resetpassword from './Resetpassword';
 import axios from "axios";
 import { toast } from 'react-toastify';
 
@@ -55,7 +55,6 @@ const AdminProfile = () => {
   };
 
   const handleResetPassword = (newPassword) => {
-    // Here you would typically also send this data to your server
     console.log('Password reset to:', newPassword);
   };
 
@@ -66,12 +65,12 @@ const AdminProfile = () => {
   };
 
   return (
-    <div className="flex justify-center p-20 items-center">
-      <div className="bg-cyan-300 p-10 pt-10 rounded-3xl outline outline-4 bg-opacity-50 outline-cyan-500 shadow shadow-lg shadow-cyan-500 h-full w-full max-w-xl">
+    <div className="flex justify-center p-4 sm:p-20 items-center">
+      <div className="bg-cyan-300 p-6 sm:p-10 pt-10 rounded-3xl outline outline-4 bg-opacity-50 outline-cyan-500 shadow shadow-lg shadow-cyan-500 h-full w-full max-w-xl">
         <div className="relative flex flex-col items-center">
-          <img className="w-40 h-40 outline outline-4 outline-cyan-500 shadow shadow-xl shadow-black rounded-full object-cover mb-4" src={image} alt="Admin" />
-          <label className="absolute bottom-40 right-32 bg-white p-2 rounded-full shadow-md cursor-pointer">
-            <FaPencilAlt className="  text-gray-700" />
+          <img className="w-32 sm:w-40 h-32 sm:h-40 outline outline-4 outline-cyan-500 shadow shadow-xl shadow-black rounded-full object-cover mb-4" src={image} alt="Admin" />
+          <label className="absolute bottom-32 sm:bottom-40 right-24 sm:right-32 bg-white p-2 rounded-full shadow-md cursor-pointer">
+            <FaPencilAlt className="text-gray-700" />
             <input
               type="file"
               accept="image/*"
@@ -79,40 +78,44 @@ const AdminProfile = () => {
               className="hidden"
             />
           </label>
-          <h2 className="text-xl font-semibold text-gray-800">{admin.name}</h2>
+          <h2 className="text-lg sm:text-xl font-semibold text-gray-800">{admin.name}</h2>
         </div>
         <form onSubmit={handleSubmit}>
           <div className="mt-4">
-            <label className="block text-lg font-medium text-black">Name</label>
+            <label className="block text-base sm:text-lg font-medium text-black">Name</label>
             <input
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="mt-5 block w-full rounded-3xl border-base-300 p-2 shadow-2xl focus:border-indigo-500 focus:ring-indigo-500 sm:text-lg"
+              className="mt-2 sm:mt-5 block w-full rounded-3xl border-base-300 p-2 shadow-2xl focus:border-indigo-500 focus:ring-indigo-500 sm:text-lg"
             />
           </div>
           <div className="mt-4">
-            <label className="block text-lg font-medium text-black">Email</label>
+            <label className="block text-base sm:text-lg font-medium text-black">Email</label>
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
-              className="mt-5 block w-full rounded-3xl border-base-300 p-2 shadow-2xl focus:border-indigo-500 focus:ring-indigo-500 sm:text-lg"
+              className="mt-2 sm:mt-5 block w-full rounded-3xl border-base-300 p-2 shadow-2xl focus:border-indigo-500 focus:ring-indigo-500 sm:text-lg"
             />
           </div>
-          <button
-            onClick={updateUser}
-            className="mt-6 ml-40 bg-base-300 hover:bg-cyan-500 hover:outline hover:text-xl hover:outline-white shadow-lg shadow-black hover:text-black text-white font-bold py-2 px-4 rounded-3xl"
-          >
-            Save & Update
-          </button>
+          <div className="flex justify-center sm:justify-start sm:ml-40 mt-6">
+            <button
+              onClick={updateUser}
+              className="bg-base-300 hover:bg-cyan-500 hover:outline hover:text-lg sm:hover:text-xl hover:outline-white shadow-lg shadow-black hover:text-black text-white font-bold py-2 px-4 rounded-3xl"
+            >
+              Save & Update
+            </button>
+          </div>
         </form>
-        <button
-          onClick={() => setIsModalOpen(true)}
-          className="mt-8 ml-40 bg-red-500 hover:bg-red-600 shadow-lg hover:text-xl hover:outline hover:outline-white shadow-black hover:text-black text-white font-bold py-2 px-4 rounded-3xl"
-        >
-          Reset Password
-        </button>
+        <div className="flex justify-center sm:justify-start sm:ml-40 mt-6">
+          <button
+            onClick={() => setIsModalOpen(true)}
+            className="bg-red-500 hover:bg-red-600 shadow-lg hover:text-lg sm:hover:text-xl hover:outline hover:outline-white shadow-black hover:text-black text-white font-bold py-2 px-4 rounded-3xl"
+          >
+            Reset Password
+          </button>
+        </div>
       </div>
       <Resetpassword
         isOpen={isModalOpen}

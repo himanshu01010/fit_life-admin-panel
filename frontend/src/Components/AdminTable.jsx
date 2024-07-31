@@ -36,16 +36,16 @@ const AdminTable = () => {
       <div className="text-center md:ml-80 pb-2 pt-8">
         <h1 className='inline-block hover:text-5xl hover:mb-0 text-cyan-500 hover:text-white text-3xl md:text-7xl'>Users</h1>
       </div>
-      <div className="container md:ml-80 my-5 p-4">
-        <table className="min-w-full outline outline-cyan-500 shadow shadow-lg shadow-cyan-500 rounded-xl overflow-hidden">
-          <thead className="bg-cyan-900 text-white outline outline-cyan-500">
+      <div className="container ml-0 md:ml-60 my-5 p-4 md:p-20 overflow-x-auto md:overflow-x-visible">
+        <table className="min-w-full outline outline-cyan-500 shadow-lg rounded-xl overflow-hidden">
+          <thead className="bg-cyan-900 text-white">
             <tr>
               <th className="w-1/6 px-4 py-4 hidden md:table-cell">S.No</th>
               <th className="w-2/6 md:w-1/6 px-2 md:px-4 py-5 md:py-4">Name</th>
               <th className="w-2/6 md:w-1/6 px-2 md:px-4 py-2 md:py-4">Phone Number</th>
-              <th className="w-2/6 px-2 md:px-4 py-2 md:py-4 hidden lg:table-cell">E-mail</th>
+              <th className="w-2/6 px-2 md:px-4 py-2 md:py-4 hidden md:table-cell">E-mail</th>
               <th className="w-1/6 md:w-1/6 px-2 md:px-4 py-2 md:py-4">Service</th>
-              <th className="w-3/6 px-2 md:px-4 py-2 md:py-4 hidden lg:table-cell">Comments</th>
+              <th className="w-3/6 px-2 md:px-4 py-2 md:py-4 hidden md:table-cell">Comments</th>
               <th className="w-1/6 md:w-1/12 px-2 md:px-4 py-2 md:py-4">Actions</th>
             </tr>
           </thead>
@@ -55,9 +55,9 @@ const AdminTable = () => {
                 <td className="py-5 hidden md:table-cell">{index + 1}</td>
                 <td className="py-5 md:px-4">{item.name}</td>
                 <td className="py-5 md:px-4">{item.phone}</td>
-                <td className="py-5 hidden lg:table-cell">{item.email}</td>
+                <td className="py-5 hidden md:table-cell">{item.email}</td>
                 <td className="py-5 md:px-4">{item.service}</td>
-                <td className="py-5 hidden lg:table-cell">{item.comments}</td>
+                <td className="py-5 hidden md:table-cell">{item.comment}</td>
                 <td className="py-2">
                   <div className="flex justify-center items-center">
                     <BsFillTrashFill
